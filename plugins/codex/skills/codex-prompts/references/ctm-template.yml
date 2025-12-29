@@ -1,0 +1,213 @@
+# ============================================================
+# Codex Task Manifest (CTM)
+# Orca — Go / MCP Server / Knowledge Platform
+# ============================================================
+
+ctm_version: "1.2"
+
+# ------------------------------------------------------------
+# TASK IDENTITY
+# ------------------------------------------------------------
+task:
+  id: "[gh-issue-number]"
+  title: "[short imperative summary]"
+  repo: "github.com/dkoosis/orca"
+  branch: "codex/issue-[n]-[slug]"
+  deliverable: "Open a PR that closes #[n]"
+  # WHY:
+  # - Clear identity prevents drift
+  # - "Open a PR" enforces end-to-end completion, not just code edits
+
+# ------------------------------------------------------------
+# ROLE & POSTURE
+# ------------------------------------------------------------
+role:
+  primary: "Senior Go engineer working in this repo"
+  secondary:
+    - "MCP server contributor"
+    - "Knowledge-base / wiki domain contributor"
+    - "Test engineer (contract + edge cases)"
+  posture:
+    - "Conservative changes"
+    - "Craftsmanship over cleverness"
+    - "Assume long-term maintainership"
+  # WHY:
+  # Codex mirrors posture. Explicit conservatism reduces overreach.
+
+# ------------------------------------------------------------
+# CONTEXT
+# ------------------------------------------------------------
+context:
+  one_liner: >
+    Orca is a personal Go knowledge platform and MCP server.
+    Prioritize clarity, safety, and minimal necessary change.
+  issue_link: "[paste issue URL]"
+  success_definition:
+    - "Issue requirements met exactly"
+    - "No unrelated refactors or churn"
+    - "Tests added or updated where behavior changes"
+    - "All QA commands pass"
+  non_goals:
+    - "No architectural redesign"
+    - "No renames or formatting-only changes"
+    - "No new dependencies unless explicitly required"
+  # WHY:
+  # Codex needs both a value system AND explicit brakes.
+
+# ------------------------------------------------------------
+# INPUTS & ORIENTATION
+# ------------------------------------------------------------
+inputs:
+  working_tree:
+    assume_clean: true
+    root: "."
+  relevant_paths_hint:
+    - "[e.g., internal/kg/]"
+    - "[e.g., internal/mcp/]"
+    - "[e.g., pkg/server/]"
+  existing_tests_hint:
+    - "[e.g., *_test.go files relevant to this issue]"
+  # WHY:
+  # Naming likely neighborhoods dramatically improves navigation accuracy.
+
+# ------------------------------------------------------------
+# CONSTRAINTS
+# ------------------------------------------------------------
+constraints:
+  design_rules:
+    - "Prefer smallest change that satisfies the issue"
+    - "Preserve public APIs unless the issue requires change"
+    - "If an API changes, update all call sites and document in PR"
+  go_rules:
+    - "No panics for normal control flow"
+    - "Errors must include actionable context"
+    - "Use context.Context where the codebase already does"
+    - "Concurrency must be race-safe and deterministic"
+  craftsmanship:
+    - "Readable names over clever abstractions"
+    - "Explicit defaults over implicit magic"
+    - "Consistency with surrounding code matters more than ideal purity"
+  # WHY:
+  # These constraints encode your house style and reduce review friction.
+
+# ------------------------------------------------------------
+# REQUIRED PLAN (MUST BE SHOWN BEFORE EDITING)
+# ------------------------------------------------------------
+plan:
+  required_steps:
+    - "Restate the issue requirements in your own words (bullet list)"
+    - "Identify current behavior and exact code locations"
+    - "Propose a minimal implementation approach"
+    - "Define test strategy (what changes, what proves it)"
+    - "List risks or ambiguities and chosen interpretations"
+  stop_conditions:
+    - "If requirements are ambiguous, choose the safest conservative interpretation and note it in the PR"
+    - "If pre-existing test failures exist, isolate and report them"
+  # WHY:
+  # Codex is far more accurate after explicitly reasoning in writing.
+
+# ------------------------------------------------------------
+# IMPLEMENTATION RULES
+# ------------------------------------------------------------
+implementation_notes:
+  commits:
+    style: "Small, themed commits"
+    format: "[#n] <imperative summary>"
+  editing:
+    - "Do not reformat unrelated code"
+    - "Touch only files required for this issue"
+  logging:
+    - "Adjust logging only where behavior changes and logs already exist"
+  docs:
+    - "Update docs only if user-visible behavior changes"
+  # WHY:
+  # Prevents noisy diffs and keeps PRs reviewable.
+
+# ------------------------------------------------------------
+# TESTING
+# ------------------------------------------------------------
+testing:
+  commands:
+    - "mage qa"
+    - "go test ./..."
+  test_policy:
+    - "Add tests for new behavior or bug fixes"
+    - "Prefer table-driven tests"
+    - "Use t.TempDir for filesystem side effects"
+    - "Avoid time.Sleep; use contexts, channels, or fakes"
+  # WHY:
+  # Forces deterministic, maintainable tests instead of brittle ones.
+
+# ------------------------------------------------------------
+# VERIFICATION (PROOF OF WORK)
+# ------------------------------------------------------------
+verification:
+  must_provide:
+    - "List of commands run and their outcomes"
+    - "Summary of key code changes (what + why)"
+    - "Risk assessment and rollback notes"
+    - "Anything intentionally left out"
+  # WHY:
+  # Codex often stops early; this forces explicit proof.
+
+# ------------------------------------------------------------
+# FRICTION REPORT (LEARNING LOOP)
+# ------------------------------------------------------------
+friction_report:
+  definition: >
+    Anything that slowed you down, caused confusion, or increased error risk
+    while completing this task.
+  categories:
+    - "Repo navigation"
+    - "Build/test workflow"
+    - "Local dev environment"
+    - "Code ergonomics / API design"
+    - "CI / PR ergonomics"
+    - "MCP tools / agent workflow"
+  output_format:
+    table_columns: ["Friction", "Category", "Impact", "Root cause guess", "Remediation", "Effort", "Confidence"]
+    effort_scale: {s: "≤30m", m: "0.5–1d", l: "1–3d", xl: "3d+"}
+    confidence_scale: ["low", "med", "high"]
+  guardrails:
+    - "Report only friction encountered during this task"
+    - "Be specific: commands, file paths, or error messages"
+    - "Propose the smallest remediation that would help next time"
+    - "If remediation implies new work, suggest a follow-up issue (do not implement)"
+  minimum_items: 3
+  # WHY:
+  # This turns PRs into a steady improvement engine for Orca itself.
+
+# ------------------------------------------------------------
+# PULL REQUEST
+# ------------------------------------------------------------
+pr:
+  title: "[#n] [short descriptive title]"
+  body_template: |
+    ## Summary
+    - ...
+
+    ## What changed
+    - ...
+
+    ## Why
+    - Links: #[n]
+
+    ## How to test
+    - mage qa
+    - go test ./...
+
+    ## Friction report (for future improvement)
+    | Friction | Category | Impact | Root cause guess | Remediation | Effort | Confidence |
+    |---|---|---|---|---|---|---|
+    | ... | ... | ... | ... | ... | s/m/l/xl | low/med/high |
+
+    ## Notes / tradeoffs
+    - ...
+  checklist:
+    - "[ ] Requirements met"
+    - "[ ] Tests added or updated"
+    - "[ ] QA commands pass"
+    - "[ ] No unrelated refactors"
+    - "[ ] Friction report complete"
+  # WHY:
+  # Codex treats checklists as hard constraints, not suggestions.

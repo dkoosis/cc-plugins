@@ -1,0 +1,24 @@
+{
+  "name": "claude-plugins",
+  "owner": {
+    "name": "dkoosis"
+  },
+  "metadata": {
+    "description": "Personal Claude Code plugins",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "codex",
+      "source": "./plugins/codex",
+      "description": "Delegate tasks to OpenAI Codex agent via browser automation",
+      "version": "0.1.0",
+      "author": {
+        "name": "dkoosis"
+      },
+      "category": "automation",
+      "tags": ["codex", "openai", "delegation", "playwright"]
+    }
+  ]
+}
