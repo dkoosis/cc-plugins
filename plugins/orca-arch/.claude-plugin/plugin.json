@@ -1,0 +1,8 @@
+{
+  "name": "orca-arch",
+  "version": "1.0.0",
+  "description": "Structured architecture discussions for Orca. Prevents premature implementation by enforcing constraint discovery, purpose validation, and decision capture.",
+  "author": {
+    "name": "David"
+  }
+}
