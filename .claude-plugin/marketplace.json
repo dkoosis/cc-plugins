@@ -55,6 +55,12 @@
       "source": "./plugins/go-test-architect",
       "description": "Create comprehensive Go test suites following ADR-008 conventions",
       "category": "development"
+    },
+    {
+      "name": "llm-counsel",
+      "source": "./plugins/llm-counsel",
+      "description": "Seek code and architecture feedback from ChatGPT and Gemini via browser automation",
+      "category": "productivity"
     }
   ]
 }
