@@ -6,6 +6,8 @@ allowed-tools:
   - mcp__plugin_playwright_playwright__browser_snapshot
   - mcp__plugin_playwright_playwright__browser_click
   - mcp__plugin_playwright_playwright__browser_wait_for
+  - mcp__plugin_playwright_playwright__browser_tabs
+  - mcp__plugin_playwright_playwright__browser_close
   - Read
   - Write
 ---
@@ -24,9 +26,14 @@ If file doesn't exist or is empty, inform user no tasks are being tracked.
 
 ### Step 2: Navigate to Codex
 
-1. Navigate to `https://chatgpt.com/codex`
-2. Take snapshot to verify on home page
-3. If not logged in, abort and suggest `/codex:login`
+**IMPORTANT: Check browser state first to avoid opening duplicate tabs.**
+
+1. First, try `browser_snapshot` to check if browser is already open
+2. If snapshot succeeds and shows Codex page, skip navigation and proceed
+3. If snapshot fails or shows different page, use `browser_navigate` to go to `https://chatgpt.com/codex`
+4. If you get "browser already in use" error, use `browser_tabs` with action "list" to see open tabs
+5. Take snapshot to verify on home page
+6. If not logged in, abort and suggest `/codex:login`
 
 ### Step 3: Check Task List
 
@@ -95,3 +102,9 @@ If any tasks are complete, suggest:
 - If not logged in: Suggest `/codex:login`
 - If task list empty: Report no tasks found
 - If stored task not found in UI: Mark as "unknown" status, may be archived
+- If "browser already in use" error: Do NOT retry navigate. Use `browser_tabs` to manage existing session.
+
+## Cleanup
+
+**IMPORTANT: Do NOT close the browser when done.** Leave it open for subsequent commands.
+Only close if explicitly requested by user or if browser is in a broken state.

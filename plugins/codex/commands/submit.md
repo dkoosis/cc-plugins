@@ -10,6 +10,9 @@ allowed-tools:
   - mcp__plugin_playwright_playwright__browser_wait_for
   - mcp__plugin_playwright_playwright__browser_select_option
   - mcp__plugin_playwright_playwright__browser_evaluate
+  - mcp__plugin_playwright_playwright__browser_tabs
+  - mcp__plugin_playwright_playwright__browser_close
+  - mcp__plugin_playwright_playwright__browser_press_key
   - Bash
   - Read
   - Write
@@ -55,9 +58,14 @@ Display the generated CTM to user and ask for confirmation before submitting.
 
 ### Step 3: Navigate to Codex
 
-1. Navigate to `https://chatgpt.com/codex`
-2. Take snapshot to verify logged in and on home page
-3. If not logged in, abort and inform user
+**IMPORTANT: Check browser state first to avoid opening duplicate tabs.**
+
+1. First, try `browser_snapshot` to check if browser is already open
+2. If snapshot succeeds and shows Codex page, skip navigation and proceed
+3. If snapshot fails or shows different page, use `browser_navigate` to go to `https://chatgpt.com/codex`
+4. If you get "browser already in use" error, use `browser_tabs` with action "list" to see open tabs
+5. Take snapshot to verify logged in and on home page
+6. If not logged in, abort and inform user
 
 ### Step 4: Verify Repository Selection
 
@@ -119,6 +127,12 @@ Key sections to populate:
 - If repo not found: List available repos and ask user
 - If submission fails: Take screenshot and report error
 - If task ID capture fails: Report task submitted but ID unknown
+- If "browser already in use" error: Do NOT retry navigate. Use `browser_tabs` to manage existing session.
+
+## Cleanup
+
+**IMPORTANT: Do NOT close the browser when done.** Leave it open for subsequent commands.
+Only close if explicitly requested by user or if browser is in a broken state.
 
 ## Example Usage
 

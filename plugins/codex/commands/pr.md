@@ -7,6 +7,8 @@ allowed-tools:
   - mcp__plugin_playwright_playwright__browser_snapshot
   - mcp__plugin_playwright_playwright__browser_click
   - mcp__plugin_playwright_playwright__browser_wait_for
+  - mcp__plugin_playwright_playwright__browser_tabs
+  - mcp__plugin_playwright_playwright__browser_close
   - Read
   - Write
   - Bash
@@ -35,9 +37,14 @@ Open a completed Codex task and click "Create PR" to generate a GitHub pull requ
 
 ### Step 2: Navigate to Task Detail
 
-1. Navigate to `https://chatgpt.com/codex/tasks/{task_id}`
-2. Take snapshot to verify task detail page loaded
-3. Verify task shows completion indicators (diff view, line counts)
+**IMPORTANT: Check browser state first to avoid opening duplicate tabs.**
+
+1. First, try `browser_snapshot` to check if browser is already open
+2. If snapshot succeeds and shows a Codex task page, check if it's the right task
+3. If not on correct task or browser not open, use `browser_navigate` to go to `https://chatgpt.com/codex/tasks/{task_id}`
+4. If you get "browser already in use" error, use `browser_tabs` with action "list" to see open tabs
+5. Take snapshot to verify task detail page loaded
+6. Verify task shows completion indicators (diff view, line counts)
 
 ### Step 3: Verify Task is Complete
 
@@ -102,6 +109,12 @@ The plugin does not auto-merge - human review is always required.
 - **Task not complete**: Report status, suggest waiting
 - **Create PR button not found**: Task may already have PR, check GitHub
 - **PR creation fails**: Take screenshot, report error
+- **"Browser already in use" error**: Do NOT retry navigate. Use `browser_tabs` to manage existing session.
+
+## Cleanup
+
+**IMPORTANT: Do NOT close the browser when done.** Leave it open for subsequent commands.
+Only close if explicitly requested by user or if browser is in a broken state.
 
 ## Example Usage
 
