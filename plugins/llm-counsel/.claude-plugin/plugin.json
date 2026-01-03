@@ -1,0 +1,9 @@
+{
+  "name": "llm-counsel",
+  "version": "0.1.0",
+  "description": "Seek code and architecture feedback from ChatGPT and Gemini via browser automation",
+  "author": {
+    "name": "dkoosis"
+  },
+  "keywords": ["feedback", "review", "chatgpt", "gemini", "playwright", "second-opinion"]
+}
