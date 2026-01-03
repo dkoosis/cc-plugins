@@ -14,11 +14,12 @@ Handles complexity-related issues requiring judgment:
 
 Uses Opus model for careful refactoring that preserves behavior.
 
-### Command: godot
+### Command: polish
 
-Quick fixes for documentation comment issues:
-- Missing periods at end of comments
-- Comment formatting
+Mechanical lint fixes that don't require judgment:
+- **godot** - doc comment periods
+- **goconst** - magic literals → constants
+- **revive** (subset): unused params → `_`, indent-error-flow, error naming
 
 Uses Haiku model for fast, simple fixes.
 
@@ -39,15 +40,15 @@ The agent will:
 3. Apply changes preserving exact behavior
 4. Verify with tests and lint
 
-### Doc Comment Fixes
+### Mechanical Fixes
 
-For godot violations:
+For godot, goconst, or simple revive violations:
 
 ```
-/godot internal/...
+/polish internal/...
 ```
 
-This runs a quick pass to fix comment formatting.
+This runs a quick pass to fix doc comment formatting, extract magic literals to constants, and clean up simple revive issues.
 
 ## Refactoring Patterns
 
