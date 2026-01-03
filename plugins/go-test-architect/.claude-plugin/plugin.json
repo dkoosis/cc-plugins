@@ -1,0 +1,9 @@
+{
+  "name": "go-test-architect",
+  "version": "1.0.0",
+  "description": "Add high-quality Go tests following ADR-008 conventions. Quality over quantity - tests that catch regressions, document behavior, and enable safe refactoring.",
+  "author": {
+    "name": "dkoosis"
+  },
+  "keywords": ["go", "golang", "testing", "tests", "quality", "tdd", "coverage"]
+}

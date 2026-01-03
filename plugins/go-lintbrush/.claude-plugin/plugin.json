@@ -1,0 +1,9 @@
+{
+  "name": "go-lintbrush",
+  "version": "1.0.0",
+  "description": "Systematically fix Go lint issues from golangci-lint. Includes complexity refactoring (gocyclo/funlen) and doc comment fixes (godot).",
+  "author": {
+    "name": "dkoosis"
+  },
+  "keywords": ["go", "golang", "lint", "golangci-lint", "gocyclo", "funlen", "godot", "refactoring", "qa"]
+}
