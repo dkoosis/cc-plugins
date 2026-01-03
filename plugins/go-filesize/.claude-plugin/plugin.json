@@ -1,0 +1,9 @@
+{
+  "name": "go-filesize",
+  "version": "1.0.0",
+  "description": "Manage Go file sizes - analyze large files (>500 LOC) and plan strategic splits while maintaining package cohesion.",
+  "author": {
+    "name": "dkoosis"
+  },
+  "keywords": ["go", "golang", "filesize", "refactoring", "splitting", "LOC", "organization"]
+}

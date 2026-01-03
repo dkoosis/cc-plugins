@@ -1,0 +1,9 @@
+{
+  "name": "go-dedup",
+  "version": "1.0.0",
+  "description": "Analyze and consolidate duplicate Go code identified by jscpd. Provides strategies for extracting shared logic without over-abstraction.",
+  "author": {
+    "name": "dkoosis"
+  },
+  "keywords": ["go", "golang", "duplication", "jscpd", "refactoring", "DRY", "consolidation"]
+}

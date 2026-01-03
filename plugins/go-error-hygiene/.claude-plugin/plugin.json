@@ -1,0 +1,9 @@
+{
+  "name": "go-error-hygiene",
+  "version": "1.0.0",
+  "description": "Fix Go error handling lint issues: err113 (sentinel errors), wrapcheck (error wrapping), errorlint (error assertions). Promotes idiomatic Go error patterns.",
+  "author": {
+    "name": "dkoosis"
+  },
+  "keywords": ["go", "golang", "lint", "err113", "wrapcheck", "errorlint", "errors", "sentinel"]
+}

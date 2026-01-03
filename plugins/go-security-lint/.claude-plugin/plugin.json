@@ -1,0 +1,9 @@
+{
+  "name": "go-security-lint",
+  "version": "1.0.0",
+  "description": "Fix Go security lint issues from gosec: G115 (integer overflow), G404 (weak random), and other common security anti-patterns.",
+  "author": {
+    "name": "dkoosis"
+  },
+  "keywords": ["go", "golang", "security", "gosec", "lint", "G115", "G404", "overflow", "random"]
+}
