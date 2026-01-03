@@ -1,4 +1,5 @@
 ---
+name: orca-arch
 description: Start a structured architecture discussion about Orca. Use when considering new features, refactors, or design changes. Prevents premature implementation.
 ---
 

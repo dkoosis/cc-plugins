@@ -91,7 +91,7 @@ To generate a CTM from a plain description:
 task:
   id: "[gh-issue-number]"
   title: "[short imperative summary]"
-  repo: "github.com/dkoosis/orca"
+  repo: "github.com/OWNER/REPO"  # From .claude/codex.local.md
   branch: "codex/issue-[n]-[slug]"
   deliverable: "Open a PR that closes #[n]"
 ```
@@ -171,7 +171,7 @@ For simple tasks, use a minimal CTM:
 ```yaml
 task:
   title: "[imperative summary]"
-  repo: "github.com/dkoosis/orca"
+  repo: "github.com/OWNER/REPO"  # From .claude/codex.local.md
   branch: "codex/[slug]"
   deliverable: "Open a PR"
 

@@ -1,6 +1,6 @@
 # ============================================================
 # Codex Task Manifest (CTM)
-# Orca — Go / MCP Server / Knowledge Platform
+# Configure repo in .claude/codex.local.md
 # ============================================================
 
 ctm_version: "1.2"
@@ -11,7 +11,7 @@ ctm_version: "1.2"
 task:
   id: "[gh-issue-number]"
   title: "[short imperative summary]"
-  repo: "github.com/dkoosis/orca"
+  repo: "github.com/OWNER/REPO"  # Set via .claude/codex.local.md
   branch: "codex/issue-[n]-[slug]"
   deliverable: "Open a PR that closes #[n]"
   # WHY:

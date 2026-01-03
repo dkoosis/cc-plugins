@@ -101,10 +101,31 @@ This ensures you have current testing conventions and patterns.
 - Assert invariants: e.g., `balance >= 0`, not just `balance == 42`
 - Use `cmp.Diff` for complex structs: `github.com/google/go-cmp/cmp`
 - Use `t.Parallel()` when safe
+- Use `t.Helper()` in verification helper functions (see below)
 - Use `testdata/` dir for fixtures
 - Comment WHY, not WHAT
 - Use `require` for setup errors (fails fast)
 - Use `assert` for verification (shows all failures)
+
+### Helper Functions
+
+When creating verification helpers inside test files, always mark them with `t.Helper()`:
+
+```go
+func assertValidUser(t *testing.T, u *User) {
+    t.Helper() // Stack trace points to caller, not this line
+    require.NotNil(t, u, "user should not be nil")
+    assert.NotEmpty(t, u.ID, "user ID should not be empty")
+    assert.NotEmpty(t, u.Email, "user email should not be empty")
+}
+
+func TestUser_IsValid_When_Created(t *testing.T) {
+    u := NewUser("test@example.com")
+    assertValidUser(t, u) // Failure points here, not inside helper
+}
+```
+
+This ensures test failure messages point to the test case calling the helper, not the helper function itself - a hallmark of professional Go testing.
 
 ### DON'T
 - Vague test names

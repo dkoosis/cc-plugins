@@ -110,7 +110,7 @@ Show CTM to user for approval before submission.
 
 1. Navigate to `https://chatgpt.com/codex`
 2. Verify logged in (look for "What should we code next?")
-3. Verify repo selector shows `dkoosis/orca`
+3. Verify repo selector shows the configured repository (from `.claude/codex.local.md`)
 4. Type CTM into task input
 5. Submit and capture task ID
 6. Store in `.claude/codex-tasks.json`

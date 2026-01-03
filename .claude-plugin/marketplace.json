@@ -4,17 +4,57 @@
     "name": "dkoosis"
   },
   "metadata": {
-    "description": "Personal Claude Code plugins",
+    "description": "Personal Claude Code plugins for Go development and task delegation",
     "pluginRoot": "./plugins"
   },
   "plugins": [
     {
       "name": "codex",
-      "source": "./plugins/codex"
+      "source": "./plugins/codex",
+      "description": "Delegate tasks to OpenAI Codex agent via browser automation",
+      "category": "productivity"
     },
     {
       "name": "orca-arch",
-      "source": "./plugins/orca-arch"
+      "source": "./plugins/orca-arch",
+      "description": "Architecture guidance for the Orca MCP server project",
+      "category": "development"
+    },
+    {
+      "name": "go-dedup",
+      "source": "./plugins/go-dedup",
+      "description": "Analyze and consolidate duplicate Go code identified by jscpd",
+      "category": "development"
+    },
+    {
+      "name": "go-error-hygiene",
+      "source": "./plugins/go-error-hygiene",
+      "description": "Fix Go error handling lint issues: err113, wrapcheck, errorlint",
+      "category": "development"
+    },
+    {
+      "name": "go-filesize",
+      "source": "./plugins/go-filesize",
+      "description": "Manage large Go source files and plan strategic splits",
+      "category": "development"
+    },
+    {
+      "name": "go-lintbrush",
+      "source": "./plugins/go-lintbrush",
+      "description": "Fix Go complexity and style issues: gocyclo, funlen, godot",
+      "category": "development"
+    },
+    {
+      "name": "go-security-lint",
+      "source": "./plugins/go-security-lint",
+      "description": "Fix Go security lint issues: gosec G115, G404",
+      "category": "development"
+    },
+    {
+      "name": "go-test-architect",
+      "source": "./plugins/go-test-architect",
+      "description": "Create comprehensive Go test suites following ADR-008 conventions",
+      "category": "development"
     }
   ]
 }

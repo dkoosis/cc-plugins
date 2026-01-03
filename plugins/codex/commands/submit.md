@@ -61,9 +61,10 @@ Display the generated CTM to user and ask for confirmation before submitting.
 
 ### Step 4: Verify Repository Selection
 
-1. Check repository dropdown shows `dkoosis/orca`
-2. If different repo selected, click dropdown and select correct repo
-3. Verify branch is `main` (or appropriate base branch)
+1. Read `.claude/codex.local.md` to get configured repository (default_repo field)
+2. Check repository dropdown shows the configured repo
+3. If different repo selected, click dropdown and select correct repo
+4. Verify branch is `main` (or appropriate base branch)
 
 ### Step 5: Submit Task
 

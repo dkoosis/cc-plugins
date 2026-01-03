@@ -61,7 +61,7 @@ If task not complete:
 
 After PR creation:
 1. Look for PR URL in page or new tab
-2. PR URL format: `https://github.com/dkoosis/orca/pull/XXX`
+2. PR URL format: `https://github.com/OWNER/REPO/pull/XXX`
 3. If PR opens in new tab, capture the URL
 
 ### Step 6: Update Task Record
@@ -73,7 +73,7 @@ Update `.claude/codex-tasks.json`:
   "id": "task_e_xxx",
   "title": "Task title",
   "status": "pr_created",
-  "pr_url": "https://github.com/dkoosis/orca/pull/XXX",
+  "pr_url": "https://github.com/OWNER/REPO/pull/XXX",
   "pr_created": "2025-01-15T11:30:00Z"
 }
 ```

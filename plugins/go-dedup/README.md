@@ -2,6 +2,19 @@
 
 Analyze and consolidate duplicate Go code detected by jscpd.
 
+## Prerequisites
+
+This plugin requires **jscpd** (copy/paste detector) to be installed:
+
+```bash
+npm install -g jscpd
+```
+
+Verify installation:
+```bash
+jscpd --version
+```
+
 ## Overview
 
 Code duplication creates maintenance burden - bugs must be fixed in multiple places, and changes ripple across the codebase. This plugin helps identify duplication patterns and suggests appropriate consolidation strategies.

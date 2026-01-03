@@ -2,6 +2,23 @@
 
 Systematically fix Go lint issues from `golangci-lint` and `mage qa`.
 
+## Prerequisites
+
+This plugin requires **golangci-lint** to be installed:
+
+```bash
+# macOS
+brew install golangci-lint
+
+# or via go install
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+```
+
+Verify installation:
+```bash
+golangci-lint --version
+```
+
 ## Components
 
 ### Agent: refactor

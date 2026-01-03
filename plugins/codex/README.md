@@ -35,13 +35,15 @@ The `codex-delegator` agent proactively suggests delegating to Codex when it rec
 
 ## Configuration
 
-Create `.claude/codex.local.md` with:
+Create `.claude/codex.local.md` in your project with:
 
 ```yaml
 ---
-default_repo: dkoosis/orca
+default_repo: owner/repo-name
 ---
 ```
+
+Replace `owner/repo-name` with your GitHub repository (e.g., `myorg/myproject`).
 
 Task state is stored in `.claude/codex-tasks.json`.
 

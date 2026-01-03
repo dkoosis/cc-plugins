@@ -1,6 +1,6 @@
 ---
 name: orca-architecture
-description: Architecture guidance for the Orca MCP server project. Auto-activates when working on Orca knowledge graph, nuggets, telemetry, or MCP server code. Use for architecture discussions, refactors, or redesigns to prevent common pitfalls and enforce good practices.
+description: This skill should be used when the user asks about "Orca architecture", "knowledge graph design", "MCP server structure", "nugget storage", "telemetry design", "Orca refactoring", or is planning changes to Orca components. Provides decision capture workflows, bounded exploration patterns, and architecture discussion guidance.
 ---
 
 # Orca Architecture Guidance
